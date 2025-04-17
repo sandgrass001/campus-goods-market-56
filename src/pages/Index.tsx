@@ -1,12 +1,20 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import Header from "@/components/Header";
+import CategoryMenu from "@/components/CategoryMenu";
+import ProductGrid from "@/components/ProductGrid";
+import BottomNavbar from "@/components/BottomNavbar";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-[#A0C8E0] pb-20">
+      <Header />
+      <div className="container mx-auto max-w-lg">
+        <CategoryMenu />
+        <div className="mt-4">
+          <ProductGrid />
+        </div>
       </div>
+      <BottomNavbar />
     </div>
   );
 };
