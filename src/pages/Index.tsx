@@ -8,7 +8,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-[#A0C8E0] pb-20">
       <Header />
-      <div className="container mx-auto max-w-lg">
+      <div className="px-4">
         <CategoryMenu />
         <div className="mt-4">
           <ProductGrid />
