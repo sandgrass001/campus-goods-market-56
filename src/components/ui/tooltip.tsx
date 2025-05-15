@@ -4,13 +4,8 @@ import * as TooltipPrimitive from "@radix-ui/react-tooltip"
 
 import { cn } from "@/lib/utils"
 
-const TooltipProvider = React.forwardRef<
-  React.ElementRef<typeof TooltipPrimitive.Provider>,
-  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Provider>
->(({ ...props }, ref) => (
-  <TooltipPrimitive.Provider ref={ref} {...props} />
-))
-TooltipProvider.displayName = TooltipPrimitive.Provider.displayName
+const TooltipProvider = TooltipPrimitive.Provider
+// TooltipProvider.displayName = TooltipPrimitive.Provider.displayName // This line is not strictly necessary if it's a direct alias
 
 const Tooltip = TooltipPrimitive.Root
 
@@ -33,3 +28,4 @@ const TooltipContent = React.forwardRef<
 TooltipContent.displayName = TooltipPrimitive.Content.displayName
 
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }
+
