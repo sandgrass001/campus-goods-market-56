@@ -4,9 +4,28 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useNavigate } from "react-router-dom";
+import { toast } from "@/components/ui/use-toast"; // Corrected import path for shadcn toast
 
 const PostItem = () => {
   const navigate = useNavigate();
+
+  const handlePublish = () => {
+    toast({
+      title: "发布成功",
+      description: "您的闲置物品已成功发布！",
+    });
+    // Add actual publish logic here
+    console.log("立即发布 clicked");
+  };
+
+  const handleSaveDraft = () => {
+    toast({
+      title: "已保存到草稿箱",
+      description: "您的闲置物品已保存为草稿。",
+    });
+    // Add actual save draft logic here
+    console.log("保存草稿 clicked");
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 pb-16">
@@ -21,10 +40,10 @@ const PostItem = () => {
 
       <div className="container mx-auto p-4 max-w-md">
         <div className="bg-white rounded-lg p-4 mb-4">
-          <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 mb-4 flex flex-col items-center justify-center">
+          <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 mb-4 flex flex-col items-center justify-center bg-gray-50">
             <Image className="h-12 w-12 text-gray-400 mb-2" />
-            <p className="text-gray-500 mb-2">点击上传商品图片</p>
-            <p className="text-gray-400 text-xs">最多可上传9张图片</p>
+            <p className="text-gray-500">添加优质首图更吸引人</p>
+            {/* Removed: <p className="text-gray-400 text-xs">最多可上传9张图片</p> */}
           </div>
 
           <Input 
@@ -47,7 +66,7 @@ const PostItem = () => {
           <div className="flex items-center mb-4">
             <MapPin className="h-5 w-5 text-gray-500 mr-2" />
             <span className="text-gray-700">交易地点：</span>
-            <span className="text-primary ml-1">选择位置</span>
+            <span className="text-primary ml-1">选择位置</span> {/* This can be made interactive later */}
           </div>
 
           <Textarea 
@@ -74,8 +93,8 @@ const PostItem = () => {
 
       {/* Bottom Action Bar */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-3 flex items-center justify-between">
-        <Button variant="outline" className="w-1/3">保存草稿</Button>
-        <Button className="w-2/3 bg-[#FFD700] text-primary">立即发布</Button>
+        <Button variant="outline" className="w-1/3" onClick={handleSaveDraft}>保存草稿</Button>
+        <Button className="w-2/3 bg-[#FFD700] text-primary hover:bg-yellowbtn/90" onClick={handlePublish}>立即发布</Button>
       </div>
     </div>
   );
