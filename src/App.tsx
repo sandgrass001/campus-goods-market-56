@@ -10,6 +10,7 @@ import PostItem from "./pages/PostItem";
 import Messages from "./pages/Messages";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
+import ChatDetail from "./pages/ChatDetail"; // Import the new ChatDetail page
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/post" element={<PostItem />} />
           <Route path="/messages" element={<Messages />} />
+          <Route path="/chat/:chatId" element={<ChatDetail />} /> {/* Add route for ChatDetail */}
           <Route path="/profile" element={<Profile />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

@@ -1,7 +1,7 @@
-
-import { ArrowLeft, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { Avatar } from "@/components/ui/avatar";
 import { useNavigate } from "react-router-dom";
+import BottomNavbar from "@/components/BottomNavbar";
 
 const conversations = [
   {
@@ -41,15 +41,16 @@ const conversations = [
 const Messages = () => {
   const navigate = useNavigate();
 
+  const handleConversationClick = (conversation: any) => {
+    navigate(`/chat/${conversation.id}`, { state: { name: conversation.name, avatar: conversation.avatar } });
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 pb-16">
       {/* Header */}
       <div className="bg-white p-4 sticky top-0 z-10">
-        <div className="flex items-center mb-3">
-          <button onClick={() => navigate(-1)}>
-            <ArrowLeft className="h-6 w-6" />
-          </button>
-          <h1 className="text-lg font-semibold ml-3">消息中心</h1>
+        <div className="flex items-center mb-3 justify-center">
+          <h1 className="text-lg font-semibold">消息中心</h1>
         </div>
         <div className="bg-searchbg rounded-full flex items-center px-4 py-2">
           <Search className="w-5 h-5 text-gray-400" />
@@ -64,7 +65,11 @@ const Messages = () => {
       {/* Message List */}
       <div className="divide-y divide-gray-200">
         {conversations.map((conversation) => (
-          <div key={conversation.id} className="p-4 bg-white flex items-center">
+          <div 
+            key={conversation.id} 
+            className="p-4 bg-white flex items-center cursor-pointer hover:bg-gray-50"
+            onClick={() => handleConversationClick(conversation)}
+          >
             <div className="relative">
               <Avatar className="h-12 w-12">
                 <img src={conversation.avatar} alt={conversation.name} />
@@ -87,9 +92,8 @@ const Messages = () => {
           </div>
         ))}
       </div>
-
-      <div className="h-16"></div> {/* Space for bottom navbar */}
       
+      <BottomNavbar />
     </div>
   );
 };

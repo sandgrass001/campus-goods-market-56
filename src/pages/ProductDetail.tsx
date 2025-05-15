@@ -1,19 +1,17 @@
-
-import { ArrowLeft, Share2, Heart, MessageCircle } from "lucide-react";
+import { Share2, Heart, MessageCircle } from "lucide-react";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import BottomNavbar from "@/components/BottomNavbar";
 
 const ProductDetail = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gray-100 pb-20">
+    <div className="min-h-screen bg-gray-100 pb-32">
       {/* Header */}
-      <div className="bg-white p-4 flex items-center justify-between">
-        <button onClick={() => navigate(-1)}>
-          <ArrowLeft className="h-6 w-6" />
-        </button>
+      <div className="bg-white p-4 flex items-center justify-between sticky top-0 z-20">
+        <div className="w-6 h-6"></div>
         <h1 className="text-lg font-semibold">商品详情</h1>
         <Share2 className="h-6 w-6" />
       </div>
@@ -61,8 +59,8 @@ const ProductDetail = () => {
         </p>
       </div>
 
-      {/* Bottom Action Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-3 flex items-center">
+      {/* Bottom Action Bar - Adjusted to sit above BottomNavbar */}
+      <div className="fixed bottom-16 left-0 right-0 bg-white border-t border-gray-200 p-3 flex items-center z-10">
         <div className="flex items-center space-x-5 mr-4">
           <div className="flex flex-col items-center">
             <Heart className="h-6 w-6 text-gray-500" />
@@ -75,6 +73,8 @@ const ProductDetail = () => {
         </div>
         <Button className="flex-1 bg-[#0058A8]">立即购买</Button>
       </div>
+
+      <BottomNavbar />
     </div>
   );
 };

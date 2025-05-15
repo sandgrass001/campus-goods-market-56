@@ -1,5 +1,6 @@
 
 import { Avatar } from "@/components/ui/avatar";
+import { useNavigate } from "react-router-dom";
 
 interface ProductItemProps {
   id: string;
@@ -22,8 +23,14 @@ const ProductItem = ({
   username,
   category,
 }: ProductItemProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/product/${id}`);
+  };
+
   return (
-    <div className="product-card">
+    <div className="product-card cursor-pointer" onClick={handleClick}>
       <div className="aspect-square overflow-hidden">
         <img
           src={image}
